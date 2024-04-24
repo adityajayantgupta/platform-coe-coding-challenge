@@ -13,5 +13,4 @@ File or Folder | Purpose
 
 ## Next Steps
 
-- Open a new terminal and run `cds watch` 
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
+- Open a new terminal and run `npm run watch-population-densities` to launch the server and the frontend

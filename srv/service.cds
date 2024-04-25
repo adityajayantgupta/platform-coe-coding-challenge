@@ -1,17 +1,16 @@
 using {sap.capire.cities as CityData} from '../db/schema';
 
-service CityService @(path:'api'){
-
+service CityService @(path:'api') {
+  @odata.draft.enabled
   entity Cities as projection on CityData.City;
-  action addCity (city : City)                      returns String;
 }
 
-extend projection CityService.Cities with {
-  population/area as density: Decimal(10,2),
+extend projection CityService.Cities with{
+  population/area as density: Decimal(10,2)
 }
 
-  type City {
-    name: String;
-    population: Integer;
-    area: Integer;
-  }
+type City {
+  name: String;
+  population: Integer;
+  area: Integer;
+}

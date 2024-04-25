@@ -19,5 +19,13 @@
   },
   "sapux": [
     "app/population-densities"
-  ]
+  ],
+  "cds": {
+    "query": {
+      "limit": {
+        "default": 30, 
+        "max": 100     
+      }
+    }
+  }
 }

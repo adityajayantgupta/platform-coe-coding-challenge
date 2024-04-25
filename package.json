@@ -11,9 +11,15 @@
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
-    "@sap/ux-specification": "^1.120.8"
+    "@sap/ux-specification": "^1.120.8",
+    "axios": "^1.6.8",
+    "chai": "^4.4.1",
+    "chai-as-promised": "^7.1.1",
+    "chai-subset": "^1.6.0",
+    "jest": "^29.7.0"
   },
   "scripts": {
+    "test": "jest tests/test.js",
     "start": "cds-serve",
     "watch-population-densities": "cds watch --open population-densities/webapp/index.html?sap-ui-xx-viewCache=false"
   },
@@ -27,19 +33,23 @@
         "users": {
           "user": {
             "password": "1234",
-            "roles": [ "user"]
+            "roles": [
+              "user"
+            ]
           },
           "admin": {
             "password": "1234",
-            "roles": [ "admin"]
+            "roles": [
+              "admin"
+            ]
           }
         }
       }
     },
     "query": {
       "limit": {
-        "default": 30, 
-        "max": 100     
+        "default": 30,
+        "max": 100
       }
     }
   }

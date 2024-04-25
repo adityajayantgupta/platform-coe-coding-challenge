@@ -1,8 +1,11 @@
 using {sap.capire.cities as CityData} from '../db/schema';
 
-service CityService @(path:'api') {
+service CityService @(path:'api') @(requires: 'authenticated-user'){
   @odata.draft.enabled
-  entity Cities as projection on CityData.City;
+  entity Cities @(restrict: [
+    { grant: 'WRITE', to: 'admin'},
+    { grant: 'READ', to: ['user', 'admin']}
+  ]) as projection on CityData.City;
 }
 
 extend projection CityService.Cities with{

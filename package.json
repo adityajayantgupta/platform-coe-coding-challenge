@@ -21,6 +21,21 @@
     "app/population-densities"
   ],
   "cds": {
+    "requires": {
+      "auth": {
+        "strategy": "basic",
+        "users": {
+          "user": {
+            "password": "1234",
+            "roles": [ "user"]
+          },
+          "admin": {
+            "password": "1234",
+            "roles": [ "admin"]
+          }
+        }
+      }
+    },
     "query": {
       "limit": {
         "default": 30, 

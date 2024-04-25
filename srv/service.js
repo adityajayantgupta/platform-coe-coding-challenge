@@ -2,7 +2,12 @@ const cds = require("@sap/cds");
 
 module.exports = function CityService() {
 
-  this.before("CREATE", "Cities", (req) => this.validateData(req));
+  this.before("CREATE", "Cities", (req) => {
+    const validationCheck = this.validateData(req.data)
+    if (!validationCheck.valid) {
+      return req.reject(validationCheck.msg)
+    }
+  });
 
   // filter out repeating cities 
 
@@ -13,20 +18,39 @@ module.exports = function CityService() {
         city.criticality = 2
       }
 		})
-
 	})
 
-  this.validateData = function (req) {
-    const cityData = req.data
-    if (!cityData.name) {
-      return req.reject("Name cannot be empty")
+  this.on('addCity', async (req) => {
+    const cityService = await cds.connect.to('CityService')
+    const { Cities } = cityService.entities
+    const { name, population, area } = req.data.city;
+
+    // Create a new city entity
+    const newCity = {
+      name: name,
+      population: population,
+      area: area
+    };
+
+    const validationCheck = this.validateData(newCity)
+    if (!validationCheck.valid) {
+      return req.reject(validationCheck.msg)
     }
 
+    const response = await INSERT(newCity).into(Cities);
+    return response
+  })
+
+  this.validateData = function (cityData) {
+    if (!cityData.name) {
+      return {valid: false, msg: "Name cannot be empty"}
+    }
     if (cityData.population < 0) {
-      return req.reject("Population cannot be less than zero")
+      return {valid: false, msg: "Population cannot be less than zero"}
     }
     if (cityData.area <= 0) {
-      return req.reject("Area cannot be less than or equal to zero")
+      return {valid: false, msg: "Area cannot be less than or equal to zero"}
     }
+    return {valid: true}
   }
 }

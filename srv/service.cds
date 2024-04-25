@@ -6,6 +6,7 @@ service CityService @(path:'api') @(requires: 'authenticated-user'){
     { grant: 'WRITE', to: 'admin'},
     { grant: 'READ', to: ['user', 'admin']}
   ]) as projection on CityData.City;
+  action addCity (city: City) returns String;
 }
 
 extend projection CityService.Cities with{

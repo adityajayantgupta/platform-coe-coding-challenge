@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/city/",
+        "uri": "/odata/v4/api/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -115,10 +115,29 @@
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
-                    "type": "ResponsiveTable"
+                    "type": "ResponsiveTable",
+                    "quickVariantSelection": {
+                      "showCounts": true
+                    }
+                  },
+                  "columns": {
+                    "DataField::name": {
+                      "width": "40%"
+                    },
+                    "DataField::population": {
+                      "width": "20%"
+                    },
+                    "DataField::area": {
+                      "width": "20%"
+                    },
+                    "DataField::density": {
+                      "width": "20%"
+                    }
                   }
                 }
-              }
+              },
+              "hideFilterBar": true,
+              "defaultTemplateAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#table"
             }
           }
         },

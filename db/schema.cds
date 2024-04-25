@@ -4,6 +4,7 @@ entity City {
   key ID : UUID;
   name      : String(111);
   population: Integer;
-  area      : Integer; 
+  area      : Decimal; 
+  criticality: Integer;
 }
 

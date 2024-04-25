@@ -38,46 +38,37 @@ annotate service.Cities with @(
             $Type : 'UI.DataField',
             Label : '{i18n>Name}',
             Value : name,
+            Criticality : criticality,
+            CriticalityRepresentation : #WithoutIcon,
         },
         {
             $Type : 'UI.DataField',
             Label : '{i18n>Population}',
             Value : population,
-            Criticality : population,
+            Criticality : criticality,
+            CriticalityRepresentation : #WithoutIcon,
         },
         {
             $Type : 'UI.DataField',
             Label : '{i18n>Area}',
             Value : area,
+            Criticality : criticality,
+            CriticalityRepresentation : #WithoutIcon,
         },
         {
             $Type : 'UI.DataField',
             Label : '{i18n>Density}',
             Value : density,
+            Criticality : criticality,
+            CriticalityRepresentation : #WithoutIcon,
         },
     ],
 );
 
 annotate service.Cities with @(
-    UI.SelectionFields : [
-        name,
-    ]
+    UI.SelectionFields : []
 );
 
-annotate service.Cities with {
-    name @(Common.ValueList : {
-            $Type : 'Common.ValueListType',
-            CollectionPath : 'Cities',
-            Parameters : [
-                {
-                    $Type : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : name,
-                    ValueListProperty : 'name',
-                },
-            ],
-        },
-        Common.ValueListWithFixedValues : true
-)};
 annotate service.Cities with {
     name @Common.Label : '{i18n>Name}'
 };
@@ -103,3 +94,54 @@ annotate service.Cities with @(
         ],
     }
 );
+annotate service.Cities with @(
+    UI.SelectionPresentationVariant #table : {
+        $Type : 'UI.SelectionPresentationVariantType',
+        PresentationVariant : {
+            $Type : 'UI.PresentationVariantType',
+            Visualizations : [
+                '@UI.LineItem',
+            ],
+            SortOrder : [
+                {
+                    $Type : 'Common.SortOrderType',
+                    Property : name,
+                    Descending : false,
+                },
+                {
+                    $Type : 'Common.SortOrderType',
+                    Property : population,
+                    Descending : false,
+                },
+                {
+                    $Type : 'Common.SortOrderType',
+                    Property : area,
+                    Descending : false,
+                },
+            ],
+        },
+        SelectionVariant : {
+            $Type : 'UI.SelectionVariantType',
+            SelectOptions : [
+            ],
+        },
+    }
+);
+annotate service.Cities with {
+    name @Common.FieldControl : #Mandatory
+};
+annotate service.Cities with {
+    population @Common.FieldControl : #Mandatory
+};
+annotate service.Cities with {
+    area @Common.FieldControl : #Mandatory
+};
+annotate service.Cities with {
+    area @Measures.Unit : 'sq. km.'
+};
+annotate service.Cities with {
+    density @Common.FieldControl : #ReadOnly
+};
+annotate service.Cities with {
+    density @Measures.Unit : 'per sq. km.'
+};

@@ -13,7 +13,8 @@ File or Folder | Purpose
 
 ## Next Steps
 
-- Open a new terminal and run `cds serve` to launch the backend server
+- Clone the repo and run `npm i` to install the dependencies
+- Open a new terminal and run `npm run start` to launch the backend server
 - Open a new terminal and run `npm run watch-population-densities` to launch the server and the frontend
 - The API is hosted at `http://localhost:4004/odata/v4/api/`
     - Return all cities: `http://localhost:4004/odata/v4/api/Cities`
@@ -29,4 +30,4 @@ File or Folder | Purpose
             }
         }
 - The UI loads the full dataset from the service and shows it in a table with all 4 columns. It also includes a calculated density column and highlights rows with population over 1 million
-- The tests in `/tests/test.js` perform unit tests for all the specified functionality
+- The tests in `/tests/test.js` perform unit tests for all the specified functionality. You can run these tests by running `npm run test`

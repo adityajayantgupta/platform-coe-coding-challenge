@@ -10,7 +10,7 @@ service CityService @(path:'api') @(requires: 'authenticated-user'){
 }
 
 extend projection CityService.Cities with{
-  population/area as density: Decimal(10,2)
+  round(population/area, 2) as density: Decimal(10,2)
 }
 
 type City {

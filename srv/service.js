@@ -9,11 +9,8 @@ module.exports = function CityService() {
     }
   });
 
-  // filter out repeating cities 
-
   this.after('READ', 'Cities', (cities, req) => {
-
-		return cities.map(async city => {
+		return cities.map(city => {
 			if (city.population > 1000000) {
         city.criticality = 2
       }

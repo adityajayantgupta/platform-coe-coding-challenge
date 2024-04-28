@@ -1,14 +1,14 @@
-# Getting Started
+# Platform COE Hiring Challenge
 
 It contains these folders and files, following the recommended CAP project layout:
 
 File or Folder | Purpose
 ---------|----------
-`app/` | content for UI frontends goes here
+`app/` | content for UI frontends 
 `db/` | domain models and data 
 `srv/` | service models and code 
 `package.json` | project metadata and configuration
-`readme.md` | this getting started guide
+`readme.md` | this document
 
 
 ## Next Steps

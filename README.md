@@ -16,6 +16,9 @@ File or Folder | Purpose
 - Clone the repo and run `npm i` to install the dependencies
 - Open a new terminal and run `npm run start` to launch the backend server
 - Open a new terminal and run `npm run watch-population-densities` to launch the server and the frontend
+- The app uses CDS mock authentication with the following user profiles:
+    - name: "user", password: "1234" - grants READ permissions for all records
+    - name: "admin", password: "1234" - grants READ, WRITE permissions for all records
 - The API is hosted at `http://localhost:4004/odata/v4/api/`
     - Return all cities: `http://localhost:4004/odata/v4/api/Cities`
     - Sort by name / population / area in descending or ascending manner: `http://localhost:4004/odata/v4/api/Cities?$orderby=<property> <order: asc/desc>` where property can be "name", "population" or "area" and order can be "asc" for ascending and "desc" for descending order respectively
